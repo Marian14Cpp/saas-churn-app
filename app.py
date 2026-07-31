@@ -16,8 +16,22 @@ def load_model():
 
 def get_data():
     db_path = os.path.join('database', 'saas_database.db')
+    csv_path = os.path.join('data', 'customers.csv')
+    
     if not os.path.exists(db_path):
-        return None
+        if os.path.exists(csv_path):
+            os.makedirs('database', exist_ok=True)
+            df_raw = pd.read_csv(csv_path)
+            df_raw['TotalCharges'] = pd.to_numeric(df_raw['TotalCharges'].replace(' ', None), errors='coerce')
+            df_raw['TotalCharges'] = df_raw['TotalCharges'].fillna(df_raw['tenure'] * df_raw['MonthlyCharges'])
+            df_raw['Churn'] = df_raw['Churn'].apply(lambda x: 1 if str(x).strip().lower() == 'yes' else 0)
+            
+            conn = sqlite3.connect(db_path)
+            df_raw.to_sql('customers', conn, if_exists='replace', index=False)
+            conn.close()
+        else:
+            return None
+
     conn = sqlite3.connect(db_path)
     df = pd.read_sql_query("SELECT * FROM customers", conn)
     conn.close()
