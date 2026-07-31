@@ -86,9 +86,7 @@ internet_filter = st.sidebar.multiselect("Serviciu Internet", options=df["Intern
 
 filtered_df = df[(df["Contract"].isin(contract_filter)) & (df["InternetService"].isin(internet_filter))]
 
-st.title("🚀 SaaS Enterprise Churn Platform")
-st.caption("Soluție Hibridă: Management Bază de Date (SQL) + Machine Learning & Analytics")
-
+st.title("Platformă de Analiză și Prevenire a Churn-ului")
 tabs = st.tabs(["📈 Executive Dashboard", "🔮 AI Churn Predictor & What-If", "➕ Adăugare Client (CRUD)", "🗄️ Bază de Date & Export"])
 
 with tabs[0]:
