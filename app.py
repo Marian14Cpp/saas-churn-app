@@ -64,8 +64,7 @@ def setup_data_and_model():
 
 df, model_data = setup_data_and_model()
 
-st.title("📊 SaaS Customer Churn & Business Analytics")
-st.markdown("Proiect Hibrid: **Informatică Economică (SQL/Web)** + **Cibernetică (ML/Analytics)**")
+st.title("SaaS Customer Churn & Business Analytics")
 
 tabs = st.tabs(["📈 Business Dashboard", "🔮 Churn Predictor", "🗄️ Data Management"])
 
