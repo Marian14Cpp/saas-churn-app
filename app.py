@@ -95,7 +95,7 @@ with tabs[0]:
     col1, col2, col3, col4 = st.columns(4)
     col1.metric("Total Clienți Filtrați", len(filtered_df))
     col2.metric("Rată Churn Medie", f"{(filtered_df['Churn'].mean() * 100):.1f}%")
-    col3.metric("Venit Mediu Lunar (ARPU)", f"${filtered_df['MonthlyCharges'].mean():.2f}")
+    col3.metric("Venit Mediu Lunar", f"${filtered_df['MonthlyCharges'].mean():.2f}")
     col4.metric("Valoare Totală Portofoliu", f"${filtered_df['TotalCharges'].sum():,.0f}")
 
     st.divider()
